@@ -12,15 +12,18 @@ function App() {
   const [year, setYear] = useState(1);
   const [classType, setClassType] = useState("");
   const [name, setName] = useState("");
-  const [playerCardVisibility, setPlayerCardVisibility] = useState(false);
+  const [playerCardVisibility, setPlayerCardVisibility] = useState(true);
   const [health, setHealth] = useState(40);
   const [gold, setGold] = useState(0);
   const [exp, setExp] = useState(0);
-
+  const [level, setLevel] = useState(1);
+  const [skillPoints, setSkillPoints] = useState(10);
+  
   let player = {
     name: `${name}`,
     class: `${classType}`,
     health: `${health}`,
+    level: `${level}`,
     exp: `${exp}`,
     skills: [
       {
@@ -158,7 +161,14 @@ function App() {
           setHealth={setHealth}
           health={health}
           setGold={setGold}
-          gold
+          gold={gold}
+          level={level}
+          setLevel={setLevel}
+          skillPoints={skillPoints}
+          setSkillPoints={setSkillPoints}
+          exp={exp}
+          setExp={setExp}
+
         />
       </main>
     </>
