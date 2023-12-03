@@ -54,7 +54,10 @@ export const PlayerCard = ({
                 : player.health < 50
                 ? "bg-yellow-500"
                 : "bg-green-500"
-            }`}
+            }
+            
+            
+            `}
           ></div>
         </div>
       </div>
