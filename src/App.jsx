@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import classTypes from "./data/classtypes";
 
 import "./App.css";
@@ -20,6 +20,10 @@ function App() {
   const [level, setLevel] = useState(1);
   const [skillPoints, setSkillPoints] = useState(10);
   const [classAbilities, setClassAbilities] = useState({});
+
+  useEffect(() => {
+    console.log(classAbilities);
+  }, [classAbilities]);
 
   const player = {
     name: `${name}`,

@@ -23,13 +23,13 @@ export const SelectClass = ({ handleClassClick, classType }) => {
                 src={chosenClass.image}
                 alt={chosenClass.name}
               />
-              {Object.entries(chosenClass.abilities).map(([ability, value]) => (
+              {/* {Object.entries(chosenClass.abilities).map(([ability, value]) => (
                 <>
                   <p key={ability}>
                     {ability}: {value}
                   </p>
                 </>
-              ))}
+              ))} */}
             </button>
           ))}
         </div>
