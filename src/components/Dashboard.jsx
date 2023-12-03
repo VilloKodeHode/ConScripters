@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { SelectClass } from "./SelectClass";
 
-export const DashBoard = () => {
-  const [name, setName] = useState("");
+export const DashBoard = ({classType, setClassType, name, setName, setPlayerCardVisibility}) => {
   const [greeting, setGreeting] = useState("");
   const [currentForm, setCurrentForm] = useState(1);
-  const [classType, setClassType] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -18,6 +16,7 @@ export const DashBoard = () => {
         ? `Hello ${name}! I see you are a ${classType}`
         : "Please write in all fields"
     );
+    setPlayerCardVisibility(true);
     setCurrentForm((prevForm) => prevForm + 1);
   };
 
