@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { SelectClass } from "./SelectClass";
 
-export const DashBoard = ({classType, setClassType, name, setName, setPlayerCardVisibility}) => {
+export const DashBoard = ({
+  classType,
+  setClassType,
+  name,
+  setName,
+  setPlayerCardVisibility,
+  player,
+}) => {
   const [greeting, setGreeting] = useState("");
   const [currentForm, setCurrentForm] = useState(1);
 
@@ -36,7 +43,11 @@ export const DashBoard = ({classType, setClassType, name, setName, setPlayerCard
             <h1 className="text-4xl">Dungeons and dragons: ConScriptors</h1>
             <section className="flex flex-col items-center">
               <div className="flex items-center gap-2 mb-12">
-                <label htmlFor="name" className="text-lg font-semibold text-orange-800" title="Name">
+                <label
+                  htmlFor="name"
+                  className="text-lg font-semibold text-orange-800"
+                  title="Name"
+                >
                   Character name:
                 </label>
                 <input
@@ -47,9 +58,17 @@ export const DashBoard = ({classType, setClassType, name, setName, setPlayerCard
                   className="p-2 font-semibold bg-orange-300 border-2 border-orange-900 rounded-md hover:bg-orange-200 hover:border-orange-800"
                 />
               </div>
-              <SelectClass classType={classType} handleClassClick={handleClassClick} />
+              <SelectClass
+                classType={classType}
+                handleClassClick={handleClassClick}
+              />
 
-              <button onClick={updateGreeting} className="px-4 py-2 my-4 transition bg-orange-300 border-2 border-orange-900 rounded-md hover:bg-orange-200 hover:border-orange-800 w-fit">Create character</button>
+              <button
+                onClick={updateGreeting}
+                className="px-4 py-2 my-4 transition bg-orange-300 border-2 border-orange-900 rounded-md hover:bg-orange-200 hover:border-orange-800 w-fit"
+              >
+                Create character
+              </button>
             </section>
           </>
         )}
@@ -57,6 +76,34 @@ export const DashBoard = ({classType, setClassType, name, setName, setPlayerCard
         {currentForm === 2 && (
           <>
             <h3 className="text-3xl">{greeting}</h3>
+            <h3 className="text-xl">your starting items:</h3>
+            <div className="flex flex-wrap items-center justify-center gap-x-2">
+              {player.inventory.items.map((item) => (
+                <>
+                  <div className="flex flex-col items-center gap-4">
+                    <p className="text-xl">
+                      <span>x</span> <span>{item.quantity}</span>
+                    </p>
+                    <p
+                      key={item.name}
+                      onClick={() => handleItemClick(item)}
+                      className={`
+              ${item.type === "consumable" ? "text-red-500" : ""}
+              ${item.type === "weapon" ? "text-blue-500" : ""}
+              ${item.type === "armor" ? "text-green-500" : ""}
+              noselect
+              hover:cursor-pointer
+              border-2 border-orange-900 p-8
+              font-semibold
+              
+              `}
+                    >
+                      {item.name}
+                    </p>
+                  </div>
+                </>
+              ))}
+            </div>
           </>
         )}
       </div>
