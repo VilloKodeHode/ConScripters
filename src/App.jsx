@@ -12,8 +12,8 @@ function App() {
   const [year, setYear] = useState(1);
   const [classType, setClassType] = useState("");
   const [name, setName] = useState("");
-  const [playerCardVisibility, setPlayerCardVisibility] = useState(true);
-  const [health, setHealth] = useState(70);
+  const [playerCardVisibility, setPlayerCardVisibility] = useState(false);
+  const [health, setHealth] = useState(10);
   const [gold, setGold] = useState(0);
   const [exp, setExp] = useState(0);
   const [level, setLevel] = useState(1);

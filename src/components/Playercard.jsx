@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const PlayerCard = ({
   playerCardVisibility,
@@ -32,6 +32,15 @@ export const PlayerCard = ({
       }
     }
   }
+
+
+// function handleKeyDown(event) {
+//   if (event.key === "i" || event.key === "I") {
+//     setInventoryOpen(!inventoryOpen);
+//   }
+// }
+// document.addEventListener("keydown", handleKeyDown);
+
   function playerHealth() {
     return (
       <div
@@ -54,7 +63,10 @@ export const PlayerCard = ({
                 : player.health < 50
                 ? "bg-yellow-500"
                 : "bg-green-500"
-            }`}
+            }
+            
+            
+            `}
           ></div>
         </div>
       </div>
