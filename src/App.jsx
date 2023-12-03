@@ -154,6 +154,7 @@ function App() {
           setClassType={setClassType}
           name={name}
           setName={setName}
+          player={player}
         />
         <PlayerCard
           playerCardVisibility={playerCardVisibility}
@@ -168,7 +169,6 @@ function App() {
           setSkillPoints={setSkillPoints}
           exp={exp}
           setExp={setExp}
-
         />
       </main>
     </>
