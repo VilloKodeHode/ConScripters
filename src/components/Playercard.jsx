@@ -32,20 +32,24 @@ export const PlayerCard = ({
       }
     }
   }
-  function playerHealthString() {
+  function playerHealth() {
     return (
-    <p
-    className={
-      player.health < 10
-        ? "text-red-500"
-        : player.health < 50
-        ? "text-yellow-500"
-        : "text-green-500"
-    }
-  >
-    Health: {player.health}
-  </p>
-  )
+      <div
+        className={`${
+          player.health < 10
+            ? "text-red-500"
+            : player.health < 50
+            ? "text-yellow-500"
+            : "text-green-500"
+        }
+            `}
+      >
+        <p>Health: {player.health}</p>
+        <div className="w-full h-1 bg-gray-200 border-l-dark bg-black">
+  <div style={{ width: `${player.health}%` }} className="h-1 bg-red-500"></div>
+</div>
+      </div>
+    );
   }
   function handleSkillClick(skill) {}
 
@@ -54,39 +58,74 @@ export const PlayerCard = ({
       {playerCardVisibility === true ? (
         <div
           className={`
-        ${
-          playerCardBig
-            ? "fixed bottom-0 left-0 flex-col w-[256px] h-[300px] gap-6 text-black bg-gray-200"
-            : "fixed bottom-0 left-0 flex-col w-[256px] h-[150px] gap-6 text-black bg-gray-200"
-        }
-        `}
+          ${
+            playerCardBig
+              ? "fixed bottom-0 left-0 flex-col w-[256px] h-[300px] gap-6 text-black bg-gray-200"
+              : "fixed bottom-0 left-0 flex w-[256px] h-[96px] text-black bg-gray-200"
+          }
+          
+          
+          `}
         >
           <img
-            className="w-24"
+            onClick={() => setPlayerCardBig(!playerCardBig)}
+            className="w-[96px] h-[96px] cursor-pointer"
             src={`/images/classtypes/${player.class.toLowerCase()}.webp`}
             alt=""
           />
 
-          <p>Name: {player.name}</p>
-          <p>Class: {player.class}</p>
-          <p>Level: {player.level}</p>
-          <p>Exp: {player.exp}</p>
-          <p>Gold: {player.inventory.gold}</p>
-            {playerHealthString()}
+          {playerCardBig ? (
+            <>
+              <p>Name: {player.name}</p>
+              <p>Class: {player.class}</p>
+              <p>Level: {player.level}</p>
+              <p>Exp: {player.exp}</p>
+              {playerHealth()}
+            </>
+          ) : (
+            <>
+              <div className="flex flex-col w-full">
+                <p>Level: {player.level}</p>
+                <p>Exp: {player.exp}</p>
+                {playerHealth()}
+              </div>
+            </>
+          )}
 
-          <div className="flex justify-around m-2 justify-self-end">
+          <div
+            className={`
+          ${
+            playerCardBig
+              ? "flex justify-around m-2 justify-self-end"
+              : "hidden"
+          }
+          `}
+          >
             <button
               onClick={() => setInventoryOpen(!inventoryOpen)}
-              className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+              className={`
+              ${
+                playerCardBig
+                  ? "px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+                  : "hidden"
+              }
+              
+              `}
             >
-              Inventory
+              {playerCardBig ? "[I]nventory" : "[I]"}
             </button>
-
             <button
               onClick={() => setStatsOpen(!statsOpen)}
-              className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+              className={`
+              ${
+                playerCardBig
+                  ? "px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+                  : "hidden"
+              }
+              
+              `}
             >
-              Stats
+              {playerCardBig ? "[S]tats" : "[S]"}
             </button>
           </div>
         </div>
@@ -95,7 +134,6 @@ export const PlayerCard = ({
       {inventoryOpen === true && playerCardVisibility === true ? (
         <div className="fixed bottom-0 flex-col w-[256px] h-[300px] gap-6 text-black bg-gray-200 left-64">
           <p>Gold: {player.inventory.gold}</p>
-          <p>Items:</p>
           <div className="flex-col w-full h-full bg-gray-600 ">
             {player.inventory.items.map((item) => (
               <p
@@ -118,11 +156,11 @@ export const PlayerCard = ({
 
       {statsOpen === true && playerCardVisibility === true ? (
         <div
-          className={`fixed bottom-0 flex-col w-64 h-[300px] gap-6 text-black bg-gray-200 ${
+          className={`fixed bottom-0 flex-col w-64 h-fit max-h-[300px] gap-6 text-black bg-gray-200 ${
             inventoryOpen ? "left-[512px]" : "left-[256px]"
           } position-fixed`}
         >
-          <p>Skills: </p>
+          <p>Skillpoints available: {skillPoints}</p>
           <div className="flex-col w-full h-[fit-content] bg-gray-500 hover:cursor-pointer gap-2">
             {player.skills.map((skills) => (
               <h1 onClick={() => handleSkillClick(skills)}>

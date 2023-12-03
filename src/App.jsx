@@ -13,7 +13,7 @@ function App() {
   const [classType, setClassType] = useState("");
   const [name, setName] = useState("");
   const [playerCardVisibility, setPlayerCardVisibility] = useState(true);
-  const [health, setHealth] = useState(40);
+  const [health, setHealth] = useState(100);
   const [gold, setGold] = useState(0);
   const [exp, setExp] = useState(0);
   const [level, setLevel] = useState(1);
