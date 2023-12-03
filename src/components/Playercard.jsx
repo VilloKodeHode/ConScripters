@@ -45,9 +45,18 @@ export const PlayerCard = ({
             `}
       >
         <p>Health: {player.health}</p>
-        <div className="w-full h-1 bg-gray-200 border-l-dark bg-black">
-  <div style={{ width: `${player.health}%` }} className="h-1 bg-red-500"></div>
-</div>
+        <div className="w-full h-1 border-l-dark bg-black">
+          <div
+            style={{ width: `${player.health}%` }}
+            className={`h-1 ${
+              player.health < 10
+                ? "bg-red-500"
+                : player.health < 50
+                ? "bg-yellow-500"
+                : "bg-green-500"
+            }`}
+          ></div>
+        </div>
       </div>
     );
   }
