@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import classTypes from "./data/classtypes";
 
 import "./App.css";
 import { Calender } from "./components/Date";
@@ -18,8 +19,9 @@ function App() {
   const [exp, setExp] = useState(0);
   const [level, setLevel] = useState(1);
   const [skillPoints, setSkillPoints] = useState(10);
-  
-  let player = {
+  const [classAbilities, setClassAbilities] = useState({});
+
+  const player = {
     name: `${name}`,
     class: `${classType}`,
     health: `${health}`,
@@ -27,21 +29,21 @@ function App() {
     exp: `${exp}`,
     skills: [
       {
-        name:"Strength",
+        name: "Strength",
         level: 1,
       },
       {
-        name:"Dexterity",
+        name: "Dexterity",
         level: 1,
       },
       {
-        name:"Intelligence",
+        name: "Intelligence",
         level: 1,
       },
       {
-        name:"Endurance",
+        name: "Endurance",
         level: 1,
-      }
+      },
     ],
     inventory: {
       gold: `${gold}`,
@@ -74,6 +76,14 @@ function App() {
         },
       ],
     },
+  };
+
+  const handleClassClick = (selectedClass) => {
+    setClassType(selectedClass);
+    setClassAbilities(
+      classTypes.find((classType) => classType.name === selectedClass)
+        ?.abilities || {}
+    );
   };
 
   const incrementDays = () => {
@@ -155,6 +165,8 @@ function App() {
           name={name}
           setName={setName}
           player={player}
+          handleClassClick={handleClassClick}
+          classAbilities={classAbilities}
         />
         <PlayerCard
           playerCardVisibility={playerCardVisibility}

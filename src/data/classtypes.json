@@ -1,63 +1,63 @@
 [
-    {
-      "name": "Warrior",
-      "image": "/images/classtypes/warrior.webp",
-      "stats": {
-        "STR": 15,
-        "DEX": 9,
-        "CON": 14,
-        "INT": 8,
-        "WIS": 8,
-        "CHA": 8
-      }
-    },
-    {
-      "name": "Cleric",
-      "image": "/images/classtypes/cleric.webp",
-      "stats": {
-        "STR": 13,
-        "DEX": 9,
-        "CON": 14,
-        "INT": 8,
-        "WIS": 10,
-        "CHA": 8
-      }
-    },
-    {
-      "name": "Ranger",
-      "image": "/images/classtypes/ranger.webp",
-      "stats": {
-        "STR": 13,
-        "DEX": 10,
-        "CON": 14,
-        "INT": 8,
-        "WIS": 10,
-        "CHA": 8
-      }
-    },
-    {
-      "name": "Rogue",
-      "image": "/images/classtypes/rogue.webp",
-      "stats": {
-        "STR": 13,
-        "DEX": 11,
-        "CON": 14,
-        "INT": 8,
-        "WIS": 10,
-        "CHA": 8
-      }
-    },
-    {
-      "name": "Wizard",
-      "image": "/images/classtypes/wizard.webp",
-      "stats": {
-        "STR": 8,
-        "DEX": 15,
-        "CON": 12,
-        "INT": 13,
-        "WIS": 8,
-        "CHA": 8
-      }
+  {
+    "name": "Warrior",
+    "image": "/images/classtypes/warrior.webp",
+    "abilities": {
+      "strength": 15,
+      "dexterity": 9,
+      "constitution": 14,
+      "intelligence": 8,
+      "wisdom": 8,
+      "charisma": 8
     }
-  ]
+  },
+  {
+    "name": "Cleric",
+    "image": "/images/classtypes/cleric.webp",
+    "abilities": {
+      "strength": 13,
+      "dexterity": 9,
+      "constitution": 14,
+      "intelligence": 8,
+      "wisdom": 10,
+      "charisma": 8
+    }
+  },
+  {
+    "name": "Ranger",
+    "image": "/images/classtypes/ranger.webp",
+    "abilities": {
+      "strength": 13,
+      "dexterity": 10,
+      "constitution": 14,
+      "intelligence": 8,
+      "wisdom": 10,
+      "charisma": 8
+    }
+  },
+  {
+    "name": "Rogue",
+    "image": "/images/classtypes/rogue.webp",
+    "abilities": {
+      "strength": 13,
+      "dexterity": 11,
+      "constitution": 14,
+      "intelligence": 8,
+      "wisdom": 10,
+      "charisma": 8
+    }
+  },
+  {
+    "name": "Wizard",
+    "image": "/images/classtypes/wizard.webp",
+    "abilities": {
+      "strength": 8,
+      "dexterity": 15,
+      "constitution": 12,
+      "intelligence": 13,
+      "wisdom": 8,
+      "charisma": 8
+    }
+  }
+]
   

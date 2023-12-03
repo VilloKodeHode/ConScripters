@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { SelectClass } from "./SelectClass";
+import classTypes from "../data/classtypes";
 
 export const DashBoard = ({
-  classType,
-  setClassType,
+  classType: chosenClass,
+  handleClassClick,
+  classAbilities,
   name,
   setName,
   setPlayerCardVisibility,
@@ -19,16 +21,12 @@ export const DashBoard = ({
   const updateGreeting = (e) => {
     e.preventDefault();
     setGreeting(
-      name && classType
-        ? `Hello ${name}! I see you are a ${classType}`
+      name && chosenClass
+        ? `Hello ${name}! I see you are a ${chosenClass}`
         : "Please write in all fields"
     );
     setPlayerCardVisibility(true);
     setCurrentForm((prevForm) => prevForm + 1);
-  };
-
-  const handleClassClick = (selectedClass) => {
-    setClassType(selectedClass);
   };
 
   const advanceToNextForm = () => {
@@ -59,7 +57,7 @@ export const DashBoard = ({
                 />
               </div>
               <SelectClass
-                classType={classType}
+                classType={chosenClass}
                 handleClassClick={handleClassClick}
               />
 
@@ -93,13 +91,34 @@ export const DashBoard = ({
               ${item.type === "armor" ? "text-green-500" : ""}
               noselect
               hover:cursor-pointer
-              border-2 border-orange-900 p-8
+              border-2 border-orange-900 px-2 py-1 rounded-md bg-orange-50
               font-semibold
-              
+
               `}
                     >
                       {item.name}
                     </p>
+                  </div>
+                </>
+              ))}
+            </div>
+            <h3 className="text-xl">your starting abilities:</h3>
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              {Object.entries(classAbilities).map(([ability, value]) => (
+                <>
+                  <div
+                    key={ability}
+                    className="flex flex-col items-center gap-2 p-4 border-2 border-collapse rounded-lg w-36 h-36 bg-orange-50 hover:border"
+                  >
+                    <p className="font-mono text-xl">
+                      {ability.slice(0, 3).toUpperCase()}
+                    </p>
+                    <img
+                      className="w-12 h-12 border-2 border-orange-900 rounded-lg hover:border"
+                      src={`/images/classtypes/abilities/${ability}.svg`}
+                      alt=""
+                    />
+                    <p className="font-mono text-xl">{value}</p>
                   </div>
                 </>
               ))}
